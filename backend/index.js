@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import { clerkMiddleware } from '@clerk/express';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -18,6 +19,12 @@ const app = express();
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+); // config cors
 app.use(express.json()); // to parse req.body
 app.use(clerkMiddleware()); // this will add auth to req obj => req.auth
 app.use(
