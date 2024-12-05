@@ -1,4 +1,4 @@
-import TopBar from '@/components/TopBar';
+import TopBar from '@/components/Topbar';
 
 const HomePage = () => {
   return (
