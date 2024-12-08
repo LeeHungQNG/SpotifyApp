@@ -10,7 +10,7 @@ interface AuthStore {
   reset: () => void;
 }
 
-export const useAuthSore = create<AuthStore>((set) => ({
+export const useAuthStore = create<AuthStore>((set) => ({
   isAdmin: false,
   isLoading: false,
   error: null,
@@ -21,7 +21,7 @@ export const useAuthSore = create<AuthStore>((set) => ({
       const response = await axiosInstance.get('/admin/check');
       set({ isAdmin: response.data.admin });
     } catch (error: any) {
-      set({ error: error.response.data.message });
+      set({ isAdmin: false, error: error.response.data.message });
     } finally {
       set({ isLoading: false });
     }
