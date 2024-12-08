@@ -8,15 +8,15 @@ import cron from 'node-cron';
 import fs from 'fs';
 dotenv.config();
 
-import userRoutes from './src/routes/user.route.js';
-import adminRoutes from './src/routes/admin.route.js';
-import authRoutes from './src/routes/auth.route.js';
-import songRoutes from './src/routes/song.route.js';
-import albumRoutes from './src/routes/album.route.js';
-import statRoutes from './src/routes/stat.route.js';
-import { connectDB } from './src/lib/db.js';
+import userRoutes from './routes/user.route.js';
+import adminRoutes from './routes/admin.route.js';
+import authRoutes from './routes/auth.route.js';
+import songRoutes from './routes/song.route.js';
+import albumRoutes from './routes/album.route.js';
+import statRoutes from './routes/stat.route.js';
+import { connectDB } from './lib/db.js';
 import fileUpload from 'express-fileupload';
-import { initializeSocket } from './src/lib/socket.js';
+import { initializeSocket } from './lib/socket.js';
 
 const app = express();
 const PORT = process.env.PORT;
