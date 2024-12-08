@@ -8,7 +8,7 @@ import { buttonVariants } from './ui/button';
 
 const TopBar = () => {
   const { isAdmin } = useAuthStore();
-  console.log('🚀 ~ TopBar ~ isAdmin:', isAdmin);
+ 
 
   return (
     <div className="flex items-center justify-between p-4 sticky top-0 bg-zinc-900/75 backdrop-blur-md z-10">

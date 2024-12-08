@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { clerkMiddleware } from '@clerk/express';
 import cors from 'cors';
+import { createServer } from 'http';
 
 dotenv.config();
 
@@ -14,10 +15,14 @@ import albumRoutes from './src/routes/album.route.js';
 import statRoutes from './src/routes/stat.route.js';
 import { connectDB } from './src/lib/db.js';
 import fileUpload from 'express-fileupload';
+import { initializeSocket } from './src/lib/socket.js';
 
 const app = express();
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
+
+const httpServer = createServer(app);
+initializeSocket(httpServer);
 
 app.use(
   cors({
@@ -48,7 +53,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: process.env.NODE_ENV === 'production' ? 'Internal sever error' : err.message });
 });
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server is running on port ` + PORT);
   connectDB();
 });

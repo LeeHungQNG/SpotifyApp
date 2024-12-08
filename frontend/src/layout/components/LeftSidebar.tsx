@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const LeftSidebar = () => {
   const { albums, fetchAlbums, isLoading } = useMusicStore();
-  console.log('🚀 ~ LeftSidebar ~ albums:', albums);
+
 
   useEffect(() => {
     fetchAlbums();
